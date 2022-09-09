@@ -213,3 +213,6 @@ secr.py
 venv
 .pytest_cache
 .env.dev
+
+dist
+/payment.spec

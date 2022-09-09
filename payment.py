@@ -379,7 +379,7 @@ class Ui_MakeMoney(object):
         self.days_pupil7.textChanged.connect(lambda: self.text_edited())
         self.days_pupil8.textChanged.connect(lambda: self.text_edited())
         self.days_pupil1_9.textChanged.connect(lambda: self.text_edited())
-        self.pushButton.clicked.connect(self.text_edited)
+        self.pushButton.clicked.connect(self.calculate)
 
 
     def text_edited(self):
@@ -394,10 +394,13 @@ class Ui_MakeMoney(object):
                  f'{self.amount_pupil9.text()}*{self.days_pupil1_9.text()})*' \
                  f'{self.price.text()}+' \
                  f'{self.amount_MK.text()}*15+{self.amount_workOut.text()}*14.40)'
-        print(result+'*0.86')
-        self.black.setText(str(eval(result)))
-        self.white.setText(str(round(eval(result+'*0.86'), 2)))
 
+        return result
+
+    def calculate(self):
+        result = self.text_edited()
+        self.black.setText(str(eval(result)))
+        self.white.setText(str(round(eval(result + '*0.86'), 2)))
 
 if __name__ == "__main__":
     import sys
